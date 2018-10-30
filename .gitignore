@@ -1,0 +1,15 @@
+# Halite stuff
+
+*.hlt
+*.log
+*.zip
+*.txt
+
+# Ignore copies or links to Halite binary
+halite
+halite.exe
+hlt_gym/halite
+hlt_gym/halite.exe
+
+# Python stuff
+__pycache__/
