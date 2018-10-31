@@ -61,7 +61,8 @@ def play_games(binary, game_output_dir, bot_commands, number_of_runs, flags):
     print("="*len(string_title))
     len_table_row=sum([len(b) for b in bot_commands])
     for current_run in range(0, number_of_runs):
-        match_output = _play_game(binary, bot_commands, flags)
+        flags_with_rand=flags+["-s "+str(random.randint(0,4294967295))
+        match_output = _play_game(binary, bot_commands, flags_with_rand)
         results = json.loads(match_output)
         winner = _determine_winner(results)
         result[winner] = result.setdefault(winner, 0) + 1
