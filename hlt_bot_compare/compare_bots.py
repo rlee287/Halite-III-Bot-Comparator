@@ -70,10 +70,9 @@ def play_games(binary, game_output_dir, bot_commands, number_of_runs, flags):
         print("| {}|".format(str(current_run+1).ljust(5)), end="")
         for i in range(1, len(bot_names)):
             bot_win_count_str=str(result.get(str(i-1),0))
-    #for player_id, stats in results["stats"].items()
-            if results["terminated"][str(i-1)]:
+            if results["terminated"].get(str(i-1),False):
                 bot_win_count_str+=" !T!"
-            print(" {}|".format(bot_win_count_str.ljust(len(bot_names[i]))),
+            print(" {}|".format(bot_win_count_str.ljust(len(bot_names[i])-1)),
                     end="")
         print("")
     print("="*len(string_title))
