@@ -1,6 +1,7 @@
 import json
 import os
 import subprocess
+import random
 
 _SPACE_DELIMITER = ' '
 _BOT_ID_POSITION = 1
@@ -61,16 +62,19 @@ def play_games(binary, game_output_dir, bot_commands, number_of_runs, flags):
     print("="*len(string_title))
     len_table_row=sum([len(b) for b in bot_commands])
     for current_run in range(0, number_of_runs):
-        flags_with_rand=flags+["-s "+str(random.randint(0,4294967295))
+        flags_with_rand=flags+["-s "+str(random.randint(0,4294967295))]
         match_output = _play_game(binary, bot_commands, flags_with_rand)
         results = json.loads(match_output)
         winner = _determine_winner(results)
         result[winner] = result.setdefault(winner, 0) + 1
         print("| {}|".format(str(current_run+1).ljust(5)), end="")
         for i in range(1, len(bot_names)):
-            print(" {}".format(result.get(str(i-1),0)).ljust(len(bot_names[i])),
+            bot_win_count_str=str(result.get(str(i-1),0))
+    #for player_id, stats in results["stats"].items()
+            if results["terminated"][str(i-1)]:
+                bot_win_count_str+=" !T!"
+            print(" {}|".format(bot_win_count_str.ljust(len(bot_names[i]))),
                     end="")
-            print("|", end="")
         print("")
     print("="*len(string_title))
 
