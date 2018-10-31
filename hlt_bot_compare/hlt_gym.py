@@ -37,7 +37,7 @@ def _parse_arguments():
                             help="The map width the simulations will run in. If unspecified, the gym will sample randomly from the size distribution used on the game servers")
     parser.add_argument('-H', '--height', dest='map_height', action='store', type=int, default=0,
                             help="The map height the simulations will run in")
-    parser.add_argument('-i', '--iterations', dest='iterations', action='store', type=int,  default=100,
+    parser.add_argument('-i', '--iterations', dest='iterations', action='store', type=int,  default=200,
                             help="Number of games to be run")
     parser.add_argument('-t', '--no-timeout', dest='timeouts', action='store_true',
                             help="Disable timeouts for bots")
@@ -77,7 +77,6 @@ def main():
                          "must be specified together.\n")
         exit(-1)
     add_args=list()
-    #print(args.__dict__)
     if args.timeouts:
         add_args.append("--no-timeout")
     if args.map_height!=0 and args.map_width!=0:
@@ -86,6 +85,7 @@ def main():
     if args.noreplay:
         add_args.append("--no-replay")
         add_args.append("--no-logs")
+    # Random unsigned int
     compare_bots.play_games(args.halite_binary, ".", args.run_commands,
                             args.iterations, add_args)
 
