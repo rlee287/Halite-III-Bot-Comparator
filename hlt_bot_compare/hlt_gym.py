@@ -25,7 +25,7 @@ def _parse_arguments():
     Simple argparser
     :return: parsed arguments if any. Prints help otherwise
     """
-    parser = argparse.ArgumentParser(description="A Halite III gym for comparing bots.")
+    parser = argparse.ArgumentParser(description="A Halite III gym for comparing bots.\nPrints wins in a table and marks terminated bots with a \"!T!\" next to the number.")
     # .Modes.Gym
     # parser = add_parser('gym', help='Train your Bot(s)!')
     parser.add_argument('-r', '--run-command', dest='run_commands', action='append', type=str, required=True,
