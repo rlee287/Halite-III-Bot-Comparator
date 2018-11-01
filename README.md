@@ -3,7 +3,7 @@ An enhanced bot comparator for Halite III that is equivalent to the `play` modul
 
 ## Usage
 
-Change directory into the `hlt_gym` folder and run the `hlt_gym.py` file.
+Change directory into the `hlt_bot_compare` folder and run the `hlt_gym.py` file.
 If you would like to run the gym from any directory, you can add this directory into the PATH environmental variable.
 
 Example usage:
